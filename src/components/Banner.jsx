@@ -1,4 +1,6 @@
 import {Link} from 'react-router-dom'
+import axios from 'axios';
+import {useEffect, useState} from 'react'
 // export default function Banner(){
 //     return(
 //         <div className="h-[65vh] bg-cover bg-center flex items-end justify-center bg-[url(https://i0.wp.com/thefutureoftheforce.com/wp-content/uploads/2025/04/Mission-Impossible-The-Final-Reckoning-Header-FUTURE-OF-THE-FORCE.jpg?fit=1024%2C576&ssl=1)]">
@@ -8,12 +10,27 @@ import {Link} from 'react-router-dom'
 // }
 
 export default function Banner() {
+  const [url, setUrl] = useState("");
+  const imageurls = [ 'https://image.tmdb.org/t/p/original/1BpjcVIztlsk0mym7OLF6CW97eh.jpg',
+    'https://image.tmdb.org/t/p/original/zxi6WQPVc0uQAG5TtLsKvxYHApC.jpg',
+    'https://image.tmdb.org/t/p/original/28zX1DO1NJWeS1e573lSJQ9kiVh.jpg',]
+
+    useEffect(()=>{
+      function randomImage(){
+        const randoNum = Math.floor(Math.random() * imageurls.length);
+        // const newUrl = await axios.get(imageurls[randoNum]);
+
+        setUrl(imageurls[randoNum])
+      }
+
+      randomImage();
+    }, [])
   return (
     <div
       className="relative h-[65vh] bg-cover bg-center flex items-center justify-start px-10"
       style={{
         backgroundImage:
-          "url(https://i0.wp.com/thefutureoftheforce.com/wp-content/uploads/2025/04/Mission-Impossible-The-Final-Reckoning-Header-FUTURE-OF-THE-FORCE.jpg?fit=1024%2C576&ssl=1)",
+          `url(${url})`,
       }}
     >
       {/* Overlay */}

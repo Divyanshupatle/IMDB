@@ -4,18 +4,10 @@ import Banner from "./Banner"
 import MovieCard from "./MovieCard"
 import Pagination from "./Pagination";
 
-export default function Movies({addToMovieWatchList, removeFromWatchList, flag, movieList}) {
+export default function Movies({addToMovieWatchList, removeFromWatchList, movieList}) {
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(1);
     
-    function doesMovieInWatchList(movie){
-        for(let i=0; i<movieList.length; i++){
-            if(movieList[i].id === movie.id){
-                return true;
-            }
-        }
-        return false;
-    }
 
     function nextPage() {
         setPage(page + 1);
@@ -46,7 +38,7 @@ export default function Movies({addToMovieWatchList, removeFromWatchList, flag, 
 
                 {
                 movies && movies.map((movie) => (
-                    <MovieCard movie={movie} addToMovieWatchList={addToMovieWatchList} removeFromWatchList={removeFromWatchList} doesMovieInWatchList={doesMovieInWatchList}  movies={movies} />
+                    <MovieCard movie={movie} movieList={movieList} removeFromWatchList={removeFromWatchList}   addToMovieWatchList={addToMovieWatchList}/>
                 ))
                 }
             </div>

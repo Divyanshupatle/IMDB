@@ -1,4 +1,7 @@
+import { useState, useEffect } from "react";
+
 export default function WatchList({movieList}) {
+
 
   return (
 
@@ -56,7 +59,7 @@ export default function WatchList({movieList}) {
                 {/* Genre */}
                 <td className="px-6 py-4">
                   <span className="inline-block rounded-full bg-indigo-100 px-3 py-1 text-xs font-medium text-indigo-700">
-                    {movie.genre}
+                    Action
                   </span>
                 </td>
 
