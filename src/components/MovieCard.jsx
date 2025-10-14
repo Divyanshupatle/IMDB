@@ -1,7 +1,7 @@
+
 export default function MovieCard(prop){
-    console.log()
     function doesMovieExistInWatchList(){
-        for(let i=0; i<prop.movieList.length; i++){
+        for(let i=0; i<prop?.movieList?.length; i++){
             if(prop.movieList[i].id === prop.movie.id){
                 return true;
             }

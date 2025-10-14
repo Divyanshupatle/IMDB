@@ -24,7 +24,7 @@ export default function Movies({addToMovieWatchList, removeFromWatchList, movieL
         async function fetchMovie() {
             const response = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=d222a350e6cb84611fe1e9ee99be919d&language=en-US&page=${page}`)
             setMovies(response.data.results);
-            console.log(response.data.results);
+            // console.log(response.data.results);
         }
 
         fetchMovie();
@@ -37,8 +37,8 @@ export default function Movies({addToMovieWatchList, removeFromWatchList, movieL
             <div className="flex flex-wrap sp m-2 place-content-evenly">
 
                 {
-                movies && movies.map((movie) => (
-                    <MovieCard movie={movie} movieList={movieList} removeFromWatchList={removeFromWatchList}   addToMovieWatchList={addToMovieWatchList}/>
+                movies && movies.map((movie, index) => (
+                    <MovieCard movie={movie} key={index} movieList={movieList} removeFromWatchList={removeFromWatchList}   addToMovieWatchList={addToMovieWatchList}/>
                 ))
                 }
             </div>
