@@ -46,7 +46,7 @@ function App() {
         < NavBar />
         <Routes>
           <Route path="/" element={<Movies movieList={movieList} addToMovieWatchList={addToMovieWatchList} removeFromWatchList={removeFromWatchList} />} />
-          <Route path="/WatchList" element={<WatchList movieList={movieList} setMovieList={setMovieList} />} />
+          <Route path="/WatchList" element={<WatchList movieList={movieList} setMovieList={setMovieList} removeFromWatchList={removeFromWatchList}/>} />
         </Routes>
       </BrowserRouter>
     </div>
