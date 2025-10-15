@@ -4,7 +4,8 @@ import Banner from "./Banner"
 import MovieCard from "./MovieCard"
 import Pagination from "./Pagination";
 
-export default function Movies({addToMovieWatchList, removeFromWatchList, movieList}) {
+export default function Movies() {
+
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(1);
     
@@ -38,7 +39,7 @@ export default function Movies({addToMovieWatchList, removeFromWatchList, movieL
 
                 {
                 movies && movies.map((movie, index) => (
-                    <MovieCard movie={movie} key={index} movieList={movieList} removeFromWatchList={removeFromWatchList}   addToMovieWatchList={addToMovieWatchList}/>
+                    <MovieCard movie={movie} key={index} />
                 ))
                 }
             </div>

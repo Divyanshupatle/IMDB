@@ -3,6 +3,8 @@ import NavBar from "./components/NavBar"
 import WatchList from "./components/WatchList"
 import Movies from "./components/Movies"
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { MovieContext } from "./components/MovieContext"
+
 
 function App() {
   const [movieList, setMovieList] = useState([]);
@@ -16,7 +18,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-    if(movieList.length > 0){
+    if (movieList.length > 0) {
       localStorage.setItem("wlMovies", JSON.stringify(movieList))
     }
   }, [movieList])
@@ -41,15 +43,17 @@ function App() {
   }
 
   return (
-    <div>
-      <BrowserRouter>
-        < NavBar />
-        <Routes>
-          <Route path="/" element={<Movies movieList={movieList} addToMovieWatchList={addToMovieWatchList} removeFromWatchList={removeFromWatchList} />} />
-          <Route path="/WatchList" element={<WatchList movieList={movieList} setMovieList={setMovieList} removeFromWatchList={removeFromWatchList}/>} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <MovieContext.Provider value={{movieList, setMovieList,  addToMovieWatchList, removeFromWatchList}}>
+      <div>
+        <BrowserRouter>
+          < NavBar />
+          <Routes>
+            <Route path="/" element={<Movies  />} />
+            <Route path="/WatchList" element={<WatchList />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </MovieContext.Provider>
   )
 }
 

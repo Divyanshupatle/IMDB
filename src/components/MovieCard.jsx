@@ -1,8 +1,13 @@
+import { useContext } from "react";
+import {MovieContext} from "./MovieContext"
+
 
 export default function MovieCard(prop){
+    const {movieList, addToMovieWatchList, removeFromWatchList} = useContext(MovieContext);
+
     function doesMovieExistInWatchList(){
-        for(let i=0; i<prop?.movieList?.length; i++){
-            if(prop.movieList[i].id === prop.movie.id){
+        for(let i=0; i<movieList?.length; i++){
+            if(movieList[i].id === prop.movie.id){
                 return true;
             }
         }
@@ -16,9 +21,9 @@ export default function MovieCard(prop){
                     <div className="w-full flex justify-end">
                         {
                            doesMovieExistInWatchList() ? (
-                            <div className="w-[35px] h-[25px] text-xl text-center align-middle  outline-none rounded bg-gray-600/70 mr-2 mt-2 cursor-pointer" onClick={()=>{prop.removeFromWatchList(prop.movie)}}>&#10060;</div>
+                            <div className="w-[35px] h-[25px] text-xl text-center align-middle  outline-none rounded bg-gray-600/70 mr-2 mt-2 cursor-pointer" onClick={()=>{removeFromWatchList(prop.movie)}}>&#10060;</div>
                            ) : (
-                            <div className="w-[35px] h-[25px] text-xl text-center align-middle  outline-none rounded bg-gray-600/70 mr-2 mt-2 cursor-pointer" onClick={()=>{prop.addToMovieWatchList(prop.movie)}}>&#128525;</div>
+                            <div className="w-[35px] h-[25px] text-xl text-center align-middle  outline-none rounded bg-gray-600/70 mr-2 mt-2 cursor-pointer" onClick={()=>{addToMovieWatchList(prop.movie)}}>&#128525;</div>
                            ) 
                         }
                             
